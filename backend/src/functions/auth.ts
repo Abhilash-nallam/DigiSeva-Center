@@ -28,8 +28,14 @@ export async function login(request: HttpRequest): Promise<HttpResponse> {
 export async function verifyTotpLogin(request: HttpRequest): Promise<HttpResponse> {
   const challenge = await requireAuthChallenge(request.cookies.ds_admin_challenge);
   enforceRateLimit(`admin-totp:${challenge.adminId}`, 5, 5 * 60 * 1000);
-  const token = (request.body as { token?: string }).token?.trim();
-  if (!/^\d{6}$/.test(token || "")) throw new ApiError("VALIDATION_ERROR", "A six-digit authenticator code is required.");
+ const token = (request.body as { token?: string }).token?.trim();
+
+if (!token || !/^\d{6}$/.test(token)) {
+  throw new ApiError(
+    "VALIDATION_ERROR",
+    "A six-digit authenticator code is required.",
+  );
+}
   const admins = await listDocuments<AdminRecord>("admins", [], 100);
   const admin = admins.items.find((item) => item.$id === challenge.adminId);
   if (!admin || !admin.enabled || admin.nexoraState !== "ACTIVE" || !admin.nexoraSecretEncrypted) throw new ApiError("AUTHENTICATION_REQUIRED", "Authentication is unavailable.", 401);
