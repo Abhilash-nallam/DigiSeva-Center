@@ -107,7 +107,12 @@ export async function regenerateRecoveryCodes(request: HttpRequest): Promise<Htt
   const codes = await listDocuments<RecoveryCode>("admin_recovery_codes", [Query.equal("adminId", targetAdmin)], 100);
   await Promise.all(codes.items.map((code) => updateDocument<RecoveryCode>("admin_recovery_codes", code.$id, { usedAt: new Date().toISOString() })));
   const recoveryCodes = Array.from({ length: 8 }, () => `${secureToken(6)}-${secureToken(6)}`.toUpperCase());
-  await Promise.all(recoveryCodes.map((code) => createDocument("admin_recovery_codes", { adminId: targetAdmin, codeHash: await hashPassword(code, process.env.PASSWORD_PEPPER || ""), createdAt: new Date().toISOString() })));
-  await audit("recovery_code.regenerated", "SUCCESS", requestId(request), session, "admin", targetAdmin, { count: recoveryCodes.length });
-  return json(200, { recoveryCodes, remaining: recoveryCodes.length });
-}
+ 110  await Promise.all(
+111    recoveryCodes.map(async (code) =>
+112      createDocument("admin_recovery_codes", {
+113        adminId: targetAdmin,
+114        codeHash: await hashPassword(code, process.env.PASSWORD_PEPPER || ""),
+115        createdAt: new Date().toISOString(),
+116      }),
+117    ),
+118  );
