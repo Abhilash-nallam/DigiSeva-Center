@@ -7,7 +7,19 @@ export function sha256(value: string): string { return createHash("sha256").upda
 export async function hashPassword(password: string, pepper: string): Promise<string> { return bcrypt.hash(`${password}${pepper}`, 12); }
 export async function verifyPassword(password: string, pepper: string, digest: string): Promise<boolean> { return bcrypt.compare(`${password}${pepper}`, digest); }
 export function generateTotpSecret(): string { return generateSecret(); }
-export async function verifyTotp(secret: string, token: string, epochTolerance = 1): Promise<boolean> { return verifyTotpToken({ secret, token, epochTolerance }); }
+export async function verifyTotp(
+  secret: string,
+  token: string,
+  epochTolerance = 1,
+): Promise<boolean> {
+  const result = await verifyTotpToken({
+    secret,
+    token,
+    epochTolerance,
+  });
+
+  return result.valid;
+}
 function encryptionKey(): Buffer { const value = process.env.NEXORA_SECRET_ENCRYPTION_KEY?.trim(); if (!value) throw new Error("CONFIGURATION_REQUIRED: NEXORA_SECRET_ENCRYPTION_KEY"); const key = Buffer.from(value, "base64"); if (key.length !== 32) throw new Error("CONFIGURATION_REQUIRED: NEXORA_SECRET_ENCRYPTION_KEY"); return key; }
 export function encryptSecret(value: string): string { const iv = randomBytes(12); const cipher = createCipheriv("aes-256-gcm", encryptionKey(), iv); const ciphertext = Buffer.concat([cipher.update(value, "utf8"), cipher.final()]); return `${iv.toString("base64url")}.${cipher.getAuthTag().toString("base64url")}.${ciphertext.toString("base64url")}`; }
 export function decryptSecret(value: string): string { const [ivValue, tagValue, ciphertextValue] = value.split("."); if (!ivValue || !tagValue || !ciphertextValue) throw new Error("Invalid encrypted secret"); const decipher = createDecipheriv("aes-256-gcm", encryptionKey(), Buffer.from(ivValue, "base64url")); decipher.setAuthTag(Buffer.from(tagValue, "base64url")); return Buffer.concat([decipher.update(Buffer.from(ciphertextValue, "base64url")), decipher.final()]).toString("utf8"); }
