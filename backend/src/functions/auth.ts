@@ -28,14 +28,23 @@ export async function login(request: HttpRequest): Promise<HttpResponse> {
 export async function verifyTotpLogin(request: HttpRequest): Promise<HttpResponse> {
   const challenge = await requireAuthChallenge(request.cookies.ds_admin_challenge);
   enforceRateLimit(`admin-totp:${challenge.adminId}`, 5, 5 * 60 * 1000);
- const token = (request.body as { token?: string }).token?.trim();
-
-if (!token || !/^\d{6}$/.test(token)) {
-  throw new ApiError(
-    "VALIDATION_ERROR",
-    "A six-digit authenticator code is required.",
-  );
-}
+31  const token = (request.body as { token?: string }).token?.trim();
+32
+33  if (!token || !/^\d{6}$/.test(token)) {
+34    throw new ApiError(
+35      "VALIDATION_ERROR",
+36      "A six-digit authenticator code is required.",
+37    );
+38  }
+39
+40  await updateAuthChallenge(challenge.challengeId, {
+41    attempts: challenge.attempts + 1,
+42  });
+43
+44  const valid = await verifyTotp(
+45    decryptSecret(admin.nexoraSecretEncrypted),
+46    token,
+47  );
   const admins = await listDocuments<AdminRecord>("admins", [], 100);
   const admin = admins.items.find((item) => item.$id === challenge.adminId);
   if (!admin || !admin.enabled || admin.nexoraState !== "ACTIVE" || !admin.nexoraSecretEncrypted) throw new ApiError("AUTHENTICATION_REQUIRED", "Authentication is unavailable.", 401);
