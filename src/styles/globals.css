@@ -1,0 +1,25 @@
+
+/* DigiSeva production responsive hardening */
+html { overflow-x: hidden; }
+body { min-width: 320px; overflow-x: hidden; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+:focus-visible { outline: 3px solid color-mix(in srgb, var(--primary) 45%, transparent); outline-offset: 2px; }
+img { max-width: 100%; height: auto; }
+
+@media (max-width: 640px) {
+  .digiseva-mobile-safe-bottom { padding-bottom: calc(4rem + env(safe-area-inset-bottom)); }
+  .overflow-x-auto { -webkit-overflow-scrolling: touch; }
+}
+
+@media (max-width: 480px) {
+  h1 { line-height: 1.25; }
+  h2 { line-height: 1.3; }
+  input, select, textarea { font-size: 16px !important; }
+}
+
+@media print {
+  nav, footer, .no-print, [aria-label="mobile-navigation"] { display: none !important; }
+  body { background: white !important; }
+  #root { height: auto !important; }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "digiseva-backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "tsx src/shared/security.test.ts && tsx src/shared/rbac.test.ts"
+  },
+  "dependencies": {
+    "appwrite": "17.0.0",
+    "bcryptjs": "3.0.2",
+    "otplib": "13.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.21",
+    "tsx": "4.23.13",
+    "typescript": "5.8.3"
+  }
+}

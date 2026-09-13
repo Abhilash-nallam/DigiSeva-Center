@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Build output
+dist/
+backend/dist/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Local tooling
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# OS files
+.DS_Store
+Thumbs.db

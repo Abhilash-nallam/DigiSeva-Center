@@ -1,0 +1,550 @@
+You are a senior UI/UX designer and React developer.
+
+Redesign my existing DigiSeva Government Services website into a modern, premium, responsive government services portal similar to DigiLocker, Passport Seva, and CSC Digital Seva.
+
+IMPORTANT:
+- Keep all existing functionality, service data, categories, fees, and backend logic.
+- Only improve the UI, UX, navigation, and user flow.
+- Use React + TypeScript + Tailwind CSS.
+- Create reusable components.
+- Mobile-first responsive design.
+- Smooth animations using Framer Motion.
+- Clean government-inspired color palette (Blue, White, Emerald Green).
+- Rounded corners, subtle shadows, glassmorphism where appropriate.
+- Accessible design (WCAG friendly).
+
+=========================================
+NEW USER FLOW
+=========================================
+
+Landing Page
+↓
+
+Hero Section
+↓
+
+Search Services
+
+↓
+
+Popular Services
+
+↓
+
+Browse Categories
+
+↓
+
+Service Details
+
+↓
+
+Apply Now
+
+↓
+
+Upload Documents
+
+↓
+
+Review
+
+↓
+
+Payment
+
+↓
+
+Application Submitted
+
+↓
+
+Track Status
+
+=========================================
+LANDING PAGE
+=========================================
+
+Create a modern homepage with:
+
+1. Sticky Navbar
+- Logo
+- Home
+- Services
+- Track Application
+- Pricing
+- About
+- Contact
+- Login
+
+2. Hero Section
+Large heading:
+
+"Government Services Made Simple"
+
+Subtitle:
+
+"Apply for PAN, Passport, Driving Licence, Certificates and 60+ Government Services Online."
+
+Include:
+
+Large Search Bar
+
+Placeholder:
+
+"Search any government service..."
+
+Buttons:
+
+Primary:
+Apply Now
+
+Secondary:
+Track Application
+
+Background:
+Government illustration with subtle gradients.
+
+=========================================
+POPULAR SERVICES
+=========================================
+
+Create attractive cards for:
+
+PAN Card
+
+Aadhaar Services
+
+Passport
+
+Driving Licence
+
+Birth Certificate
+
+Income Certificate
+
+Each card should contain:
+
+Icon
+
+Title
+
+Short Description
+
+Processing Time
+
+Apply Button
+
+=========================================
+SERVICE CATEGORIES
+=========================================
+
+Display categories in a responsive grid.
+
+Examples:
+
+Identity
+
+Transport
+
+Certificates
+
+Education
+
+Finance
+
+Agriculture
+
+Health
+
+Legal
+
+Business
+
+Employment
+
+Each category card should contain:
+
+Large Icon
+
+Title
+
+Number of Services
+
+Hover Animation
+
+=========================================
+SEARCH EXPERIENCE
+=========================================
+
+Create an intelligent search.
+
+Features:
+
+Instant search
+
+Suggestions
+
+Popular searches
+
+No results illustration
+
+Category filters
+
+=========================================
+SERVICE DETAILS PAGE
+=========================================
+
+Modern layout.
+
+Top section:
+
+Service Name
+
+Government Badge
+
+Rating
+
+Processing Time
+
+Service Fee
+
+Apply Now button
+
+Then display:
+
+Overview
+
+Required Documents
+
+Eligibility
+
+Step-by-Step Process
+
+Frequently Asked Questions
+
+Need Help section
+
+WhatsApp Button
+
+Call Button
+
+=========================================
+APPLICATION PROCESS
+=========================================
+
+Replace one long form with a multi-step wizard.
+
+Step 1
+
+Personal Details
+
+↓
+
+Step 2
+
+Upload Documents
+
+↓
+
+Step 3
+
+Review Details
+
+↓
+
+Step 4
+
+Payment
+
+↓
+
+Success
+
+Display progress bar:
+
+Step 1 ●────○────○────○
+
+Auto-save form progress.
+
+=========================================
+DOCUMENT CHECKLIST
+=========================================
+
+Before upload display:
+
+Required Documents
+
+☐ Aadhaar
+
+☐ Passport Photo
+
+☐ Address Proof
+
+☐ Signature
+
+Ready?
+
+Continue
+
+=========================================
+PAYMENT PAGE
+=========================================
+
+Modern payment summary.
+
+Show:
+
+Government Fee
+
+Service Charge
+
+GST
+
+Total
+
+Payment Methods:
+
+UPI
+
+Cards
+
+Net Banking
+
+Wallets
+
+=========================================
+SUCCESS PAGE
+=========================================
+
+Large success animation.
+
+Show:
+
+Application Submitted
+
+Reference Number
+
+Estimated Completion Time
+
+Buttons:
+
+Download Receipt
+
+Track Status
+
+Back Home
+
+=========================================
+TRACK APPLICATION
+=========================================
+
+Dedicated page.
+
+Search using:
+
+Application ID
+
+Phone Number
+
+Display timeline:
+
+Submitted
+
+↓
+
+Documents Verified
+
+↓
+
+Processing
+
+↓
+
+Approved
+
+↓
+
+Completed
+
+Use colorful status indicators.
+
+=========================================
+USER DASHBOARD
+=========================================
+
+Dashboard should show:
+
+Recent Applications
+
+Saved Services
+
+Pending Documents
+
+Notifications
+
+Profile
+
+Quick Actions
+
+=========================================
+FLOATING ACTION BUTTONS
+=========================================
+
+Bottom-right floating buttons:
+
+WhatsApp
+
+Call Support
+
+Back To Top
+
+=========================================
+WHY CHOOSE US
+=========================================
+
+Create premium trust section.
+
+Include:
+
+100% Secure
+
+Government Compliant
+
+Fast Processing
+
+Expert Assistance
+
+24×7 Support
+
+Thousands of Happy Customers
+
+=========================================
+FAQ
+=========================================
+
+Modern accordion.
+
+Questions:
+
+How long does processing take?
+
+Refund Policy
+
+Required Documents
+
+Payment Security
+
+Application Tracking
+
+=========================================
+FOOTER
+=========================================
+
+Footer contains:
+
+Quick Links
+
+Government Services
+
+Support
+
+Privacy Policy
+
+Terms
+
+Contact
+
+Social Media
+
+=========================================
+MICRO ANIMATIONS
+=========================================
+
+Add smooth animations:
+
+Fade
+
+Slide
+
+Hover Scale
+
+Button Ripple
+
+Card Lift
+
+Loading Skeletons
+
+Success Animation
+
+=========================================
+MOBILE EXPERIENCE
+=========================================
+
+Bottom Navigation:
+
+Home
+
+Services
+
+Track
+
+Profile
+
+Support
+
+Sticky Apply Button
+
+Touch-friendly layout
+
+=========================================
+DESIGN SYSTEM
+=========================================
+
+Primary:
+#2563EB
+
+Secondary:
+#10B981
+
+Accent:
+#F59E0B
+
+Background:
+#F8FAFC
+
+Rounded corners:
+16px
+
+Cards:
+Soft shadows
+
+Buttons:
+Rounded pills
+
+Typography:
+Modern and readable
+
+=========================================
+PERFORMANCE
+=========================================
+
+Lazy loading
+
+Component splitting
+
+Optimized images
+
+Fast rendering
+
+SEO friendly
+
+=========================================
+IMPORTANT
+=========================================
+
+Do NOT remove existing functionality.
+
+Keep all current service data.
+
+Only redesign and reorganize the UI/UX into a premium, modern government services portal with an intuitive flow that lets users complete any service in 2–3 clicks.
