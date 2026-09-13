@@ -5,7 +5,7 @@ import {
   ID,
   Query,
   type Models,
-} from "appwrite";
+} from "node-appwrite";
 import { loadConfig } from "./config.js";
 
 export interface Page<T> {
@@ -38,7 +38,7 @@ export async function createDocument<T extends object>(
     config.appwrite.databaseId,
     collectionId,
     documentId,
-    data as Record<string, unknown>,
+    data as Omit<Models.Document, keyof Models.Document>,
   ) as Promise<Models.Document & T>;
 }
 
@@ -66,7 +66,7 @@ export async function updateDocument<T extends object>(
     config.appwrite.databaseId,
     collectionId,
     documentId,
-    data as Record<string, unknown>,
+    data as Omit<Models.Document, keyof Models.Document>,
   ) as Promise<Models.Document & T>;
 }
 
