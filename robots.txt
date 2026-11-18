@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://digisevacenter.gt.tc/sitemap.xml
+
+# Block junk query strings from being indexed
+Disallow: /*?i=
+Disallow: /?i=1
